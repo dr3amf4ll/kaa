@@ -561,9 +561,8 @@ kaa_error_t kaa_tcp_channel_set_access_point(void *context, kaa_access_point_t *
             goto cleanup;
         }
     }
-
-    return error;
 #endif
+    return error;
 
 cleanup:
     KAA_FREE(channel->access_point.public_key);
@@ -1169,7 +1168,7 @@ kaa_error_t kaa_tcp_channel_authorize(kaa_tcp_channel_t *self)
     }
 
 #ifdef KAA_ENCRYPTION
-    /* TODO: Rework the solution to cipher without additional allocations */
+    /* TODO(KAA-1246): Rework the solution to cipher without additional allocations */
     error_code = kaa_tcp_channel_encrypt(self, (uint8_t **)&sync_buffer, &sync_size);
     if (error_code) {
         KAA_FREE(sync_buffer);
@@ -1469,10 +1468,8 @@ static uint32_t get_uint32_t(const uint8_t *buffer)
         return 0;
     }
 
-    uint32_t value = ((uint32_t)buffer[3] << 24)
-            + ((uint32_t)buffer[2] << 16)
-            + ((uint32_t)buffer[1] << 8)
-            + ((uint32_t)buffer[0]);
+    uint32_t value = 0;
+    memcpy(&value, buffer, sizeof(value));
     return KAA_NTOHL(value);
 }
 
@@ -1576,7 +1573,7 @@ kaa_error_t kaa_tcp_channel_write_pending_services(kaa_tcp_channel_t *self,
     }
 
 #ifdef KAA_ENCRYPTION
-    /* TODO: Rework the solution to cipher without additional allocations */
+    /* TODO(KAA-1246): Rework the solution to cipher without additional allocations */
     bool encrypted = true;
     error_code = kaa_tcp_channel_encrypt(self,(uint8_t **) &sync_buffer, &sync_size);
     if (error_code) {

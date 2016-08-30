@@ -4,8 +4,7 @@ title: Linux
 permalink: /:path/
 sort_idx: 10
 ---
-{% assign root_url = page.url | split: '/'%}
-{% capture root_url  %} /{{root_url[1]}}/{{root_url[2]}}/{% endcapture %}
+{% include variables.md %}
 
 * TOC
 {:toc}
@@ -33,7 +32,7 @@ Before building the C++ endpoint SDK, install the following components on your m
 
    ```
    wget http://archive.apache.org/dist/avro/avro-1.7.5/cpp/avro-cpp-1.7.5.tar.gz
-   tar -zxf avro-cpp-1.7.7.tar.gz
+   tar -zxf avro-cpp-1.7.5.tar.gz
    cd avro-cpp-1.7.5/
    cmake -G "Unix Makefiles"
    sudo make install
@@ -119,10 +118,10 @@ If you would like to run a compiled binary on some other host, you should have a
 Just install Nix on your system and execute the following command from the [root directory](https://github.com/kaaproject/kaa/tree/master/client/client-multi/client-cpp) of Kaa C++ SDK:
 
 ```
-nix-shell --pure --run true
+nix-shell
 ```
 
-Nix will download and compile SDK dependencies and eventually build the SDK itself.
+Nix will download and compile all SDK dependencies and prepare your environment for development.
 For more details on using Nix in C and C++ SDKs refer to [Nix guide]({{root_url}}Customization-guide/Endpoint-SDKs/C-SDK/Environment-setup/Nix-guide).
 
 ## Minimal example

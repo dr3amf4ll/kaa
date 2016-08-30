@@ -6,8 +6,7 @@ nav: /:path/Programming-guide/Key-platform-features/Data-collection/Oracle-NoSQL
 sort_idx: 80
 ---
 
-{% assign root_url = page.url | split: '/'%}
-{% capture root_url  %} /{{root_url[1]}}/{{root_url[2]}}/{% endcapture %}
+{% include variables.md %}
 
 * TOC
 {:toc}
@@ -47,9 +46,8 @@ To create a log appender of the Oracle NoSQL key/value storage type, do the foll
 
 # Creating Oracle NoSQL log appender with Admin REST API
 
-It is also possible to create an instance of the Oracle NoSQL log appender for the application by using the
-[REST API]({{root_url}}Programming-guide/Server-REST-APIs #TODO). The following example illustrates how to create the Oracle NoSQL log appender via the
-Admin REST API.
+It is also possible to create an instance of the Oracle NoSQL log appender for the application by using the [REST API]({{root_url}}Programming-guide/Server-REST-APIs/#!/Logging/editLogAppender). 
+The following example illustrates how to create the Oracle NoSQL log appender via the Admin REST API.
 
 ## Configuration
 
