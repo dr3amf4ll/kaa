@@ -619,7 +619,8 @@ pre, .nav-tabs>li>a {
 .logo img{
 	transform: initial;
 	max-width: 100% !important;
-	margin: 0 auto;
+	margin: 20px auto 0;
+	border-radius: 8px;
 }
 
 #sidebar .logo{
