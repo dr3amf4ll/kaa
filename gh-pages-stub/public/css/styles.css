@@ -158,6 +158,43 @@ hr {
 	/* padding-top:15px; */
 }
 
+#split-bar {
+	position: fixed;
+	display: table;
+	width: 5px;
+	height: 100%;
+	background: #dcdcdc;
+	cursor: ew-resize;
+	z-index: 10;
+}
+
+#split-bar-dots {
+	display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    color: #717171;
+    font-size: 20px;
+    line-height: 0.5;
+}
+
+@media screen and (max-width: 768px){
+	#sidebar, #search{
+		width: 8.33333333% !important;
+	}
+	#main{
+		width: 91.66666667% !important;
+	}
+	#split-bar{
+		display: none;
+	}
+	.row-offcanvas-left.active #sidebar.sidebar-offcanvas { 
+		width: 33% !important;
+	}
+	.row-offcanvas-left.active #search {
+		width: 33% !important;
+	}
+}
+
 #sidebar, #sidebar a, #sidebar-footer a {
     color:#ccc;
     background-color:#4b4b4b;
@@ -366,7 +403,6 @@ small.text-muted {
     left: -33%;
     position: absolute;
     top: 0;
-    width: 33%;
   }
 
   #sidebar, #sidebar a, #sidebar-footer a {
